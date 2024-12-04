@@ -1,0 +1,145 @@
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor Principal */
+#authContainer {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Títulos */
+h2, h3 {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+input, textarea {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: none;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Botones */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Botones específicos */
+#privateArea button:nth-child(4) {
+    background: #28a745;
+}
+
+#privateArea button:nth-child(4):hover {
+    background: #218838;
+}
+
+#privateArea button:nth-child(5) {
+    background: #dc3545;
+}
+
+#privateArea button:nth-child(5):hover {
+    background: #c82333;
+}
+
+/* Textarea */
+textarea {
+    min-height: 80px;
+}
+
+/* Resultados */
+#resourceByIdResult, #allResourcesResult {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #555;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Mensajes de Bienvenida */
+#welcomeMessage {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Contenedores de Recursos */
+#allResourcesResult div {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#allResourcesResult div:last-child {
+    border-bottom: none;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#authContainer {
+    animation: fadeIn 0.5s ease-out;
+}
