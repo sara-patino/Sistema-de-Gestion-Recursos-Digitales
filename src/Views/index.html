@@ -30,31 +30,42 @@
         <div id="privateArea" style="display: none;">
             <h2>Área Privada</h2>
             <p id="welcomeMessage"></p>
-            
-            <!-- Crear Recurso Digital -->
-            <h3>Crear Recurso Digital</h3>
-            <form id="createResourceForm">
-                <input type="text" placeholder="Título del Recurso" required>
-                <textarea placeholder="Descripción del Recurso" required></textarea>
-                <button type="submit">Crear Recurso</button>
-            </form>
-            
-            <!-- Mostrar Recurso Digital por ID -->
-            <h3>Buscar Recurso Digital</h3>
-            <form id="getResourceByIdForm">
-                <input type="text" placeholder="ID del Recurso" required>
-                <button type="submit">Buscar Recurso</button>
-            </form>
-            <div id="resourceByIdResult"></div>
-            
-            <!-- Mostrar Todos los Recursos -->
-            <h3>Mostrar Todos los Recursos</h3>
-            <button id="getAllResourcesButton">Ver Todos los Recursos</button>
-            <div id="allResourcesResult"></div>
-            
+        
+            <!-- Botón para Crear Recurso Digital -->
+            <button id="createResourceButton">Crear Recurso Digital</button>
+        
+            <!-- Botón para Mostrar Recursos Digitales -->
+            <button id="getAllResourcesButton">Mostrar Recursos Digitales</button>
+        
             <button onclick="logout()">Cerrar Sesión</button>
         </div>
+
+        <div id="createResourceForm" style="display: none;">
+            <h3>Crear Recurso Digital</h3>
+            <form id="resourceForm">
+                <div>
+                    <label for="resourceName">Nombre del Recurso Digital:</label>
+                    <input type="text" id="resourceName" name="resourceName" required placeholder="Ingrese el nombre del recurso">
+                </div>
+                <div>
+                    <label for="resourceDescription">Descripción:</label>
+                    <textarea id="resourceDescription" name="resourceDescription" required placeholder="Ingrese una descripción del recurso"></textarea>
+                </div>
+                <div>
+                    <label for="resourceLocation">Ubicación (opcional):</label>
+                    <input type="text" id="resourceLocation" name="resourceLocation" placeholder="Ingrese la ubicación del recurso">
+                </div>
+                <div>
+                    <button type="submit">Crear Recurso</button>
+                </div>
+            </form>
+        </div>
+
+        
     </div>
+
+    
+    
 
     <script>
         const authContainer = document.getElementById('authContainer');
@@ -120,11 +131,18 @@
             document.getElementById('privateArea').style.display = 'none';
         }
 
+        // Mostrar el formulario para crear un recurso digital
+        document.getElementById('createResourceButton').onclick = () => {
+            document.getElementById('privateArea').style.display = 'none';
+            document.getElementById('createResourceForm').style.display = 'block';
+        };
+
         // Crear recurso digital
-        document.getElementById('createResourceForm').onsubmit = (e) => {
+        document.getElementById('resourceForm').onsubmit = (e) => {
             e.preventDefault();
             const title = e.target[0].value;
             const description = e.target[1].value;
+            const location = e.target[2].value;
 
             fetch('/resources', {
                 method: 'POST',
@@ -132,54 +150,18 @@
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                body: JSON.stringify({ title, description })
+                body: JSON.stringify({ title, description, location })
             })
             .then(r => r.json())
             .then(data => {
                 alert(data.message || 'Recurso creado exitosamente');
                 e.target.reset();
+                document.getElementById('createResourceForm').style.display = 'none';
+                document.getElementById('privateArea').style.display = 'block';
             });
         };
 
-        // Mostrar recurso digital por ID
-        document.getElementById('getResourceByIdForm').onsubmit = (e) => {
-            e.preventDefault();
-            const resourceId = e.target[0].value;
-
-            fetch(`/resources/${resourceId}`, {
-                headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-            })
-            .then(r => r.json())
-            .then(data => {
-                const resultDiv = document.getElementById('resourceByIdResult');
-                if (data.error) {
-                    resultDiv.textContent = data.error;
-                } else {
-                    resultDiv.textContent = `Título: ${data.title}, Descripción: ${data.description}`;
-                }
-            });
-        };
-
-        // Mostrar todos los recursos digitales
-        document.getElementById('getAllResourcesButton').onclick = () => {
-            fetch('/resources', {
-                headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-            })
-            .then(r => r.json())
-            .then(data => {
-                const resultDiv = document.getElementById('allResourcesResult');
-                resultDiv.innerHTML = '';
-                data.forEach(resource => {
-                    const resourceDiv = document.createElement('div');
-                    resourceDiv.textContent = `Título: ${resource.title}, Descripción: ${resource.description}`;
-                    resultDiv.appendChild(resourceDiv);
-                });
-            });
-        };
-
-        if (localStorage.getItem('token')) {
-            showPrivateArea();
-        }
+       
     </script>
 </body>
 </html>

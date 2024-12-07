@@ -2,27 +2,21 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const jwt = require('jsonwebtoken');
-const MongoClient = require('mongodb').MongoClient;
-const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const { type } = require('os');
+const User = require('./src/Models/UserModel');
+const { connectDB } = require('./src/Config/config');
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'frontend')));
+app.use(express.static(path.join(__dirname, 'src/Views')));
 
 const users = [];
 const JWT_SECRET = 'clave_secreta';
 const url = 'mongodb://localhost:27017/pfpw';
+PORT = process.env.PORT || 3000;
 
-mongoose.connect(url)
-    .then(() => console.log('Conexión a la base de datos establecida'))
-    .catch(err => console.log(err));
+connectDB();
 
-
-const User = new mongoose.model('user',{
-    email: {type: String, unique: true},
-    password: String
-});
 app.post('/register',  async(req, res) => {
     const { email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -59,4 +53,4 @@ app.get('/private', auth, (req, res) => {
     res.json({ message: 'Área privada', user: req.user });
 });
 
-app.listen(3000, () => console.log('Servidor corriendo en http://localhost:3000'));
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));

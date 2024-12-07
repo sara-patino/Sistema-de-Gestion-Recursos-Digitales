@@ -143,3 +143,153 @@ textarea {
 #authContainer {
     animation: fadeIn 0.5s ease-out;
 }
+
+
+#privateArea {
+    display: none; /* Mantener oculto inicialmente */
+    background-color: #f4f4f4; /* Color de fondo gris claro */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    width: 80%; /* Ancho del 80% del contenedor padre */
+    margin: 20px auto; /* Centrado en la página */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: relative; /* Permitir el posicionamiento absoluto del botón */
+    height: 300px; /* Asegura que haya suficiente espacio para el botón */
+}
+
+#privateArea h2 {
+    font-size: 2rem; /* Tamaño de fuente grande */
+    color: #333; /* Color de texto oscuro */
+    margin-bottom: 15px; /* Espacio debajo del título */
+}
+
+#privateArea p {
+    font-size: 1rem; /* Tamaño de fuente más pequeño para el mensaje */
+    color: #666; /* Color de texto gris suave */
+    margin-bottom: 20px; /* Espacio debajo del mensaje */
+}
+
+#privateArea button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Texto blanco */
+    font-size: 1rem; /* Tamaño de fuente */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    margin-bottom: 15px; /* Espacio entre los botones */
+    transition: background-color 0.3s; /* Transición suave al cambiar el color */
+    width: 100%; /* Hacer que los botones ocupen todo el ancho disponible */
+}
+
+#privateArea button:hover {
+    background-color: #0056b3; /* Color más oscuro cuando se pasa el mouse */
+}
+
+#privateArea button:active {
+    background-color: #003f7d; /* Color aún más oscuro al hacer clic */
+}
+
+#privateArea button:last-child {
+    width: auto; /* El último botón (Cerrar Sesión) no ocupa todo el ancho */
+    margin-top: 30px; /* Coloca el botón más abajo */
+    margin-bottom: 0; /* Elimina el margen inferior */
+    text-align: center; /* Asegura que el texto se centre */
+    position: absolute;
+    bottom: 30px; /* Aumenta el valor para desplazar el botón más abajo */
+    left: 50%;
+    transform: translateX(-50%); /* Centra el botón en la parte inferior */
+}
+
+#createResourceForm {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 30px; /* Más espaciado interno */
+    border-radius: 12px; /* Bordes más redondeados */
+    width: 50%; /* Ancho más pequeño para un mejor centrado */
+    margin: 30px auto; /* Centrado en la página con más espacio alrededor */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave y profunda */
+    display: none; /* Mantener oculto inicialmente */
+    transition: transform 0.3s ease-in-out; /* Transición para animar la aparición */
+}
+
+#createResourceForm h3 {
+    font-size: 2rem; /* Tamaño de fuente más grande */
+    color: #333333; /* Color de texto más oscuro */
+    margin-bottom: 25px; /* Más espacio debajo del título */
+    text-align: center; /* Centrado del título */
+    font-weight: 600; /* Negrita */
+}
+
+#createResourceForm form {
+    display: flex;
+    flex-direction: column; /* Colocar los campos en columna */
+    gap: 20px; /* Espacio entre los campos */
+}
+
+#createResourceForm label {
+    font-size: 1.1rem; /* Aumentar tamaño de la fuente de las etiquetas */
+    color: #666; /* Color gris claro para las etiquetas */
+}
+
+#createResourceForm input, 
+#createResourceForm textarea {
+    padding: 12px; /* Espaciado interno en los campos */
+    font-size: 1.1rem; /* Aumentar tamaño de la fuente en los campos */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 8px; /* Bordes más redondeados */
+    width: 100%; /* Campos ocupan todo el ancho disponible */
+    transition: border-color 0.3s ease; /* Transición para suavizar el cambio de borde */
+}
+
+#createResourceForm textarea {
+    resize: vertical; /* Permitir redimensionar verticalmente */
+    min-height: 120px; /* Altura mínima del área de texto */
+}
+
+#createResourceForm input:focus, 
+#createResourceForm textarea:focus {
+    border-color: #4CAF50; /* Color verde cuando se enfoca */
+    outline: none; /* Eliminar el contorno de enfoque predeterminado */
+}
+
+#createResourceForm button {
+    background-color: #4CAF50; /* Color verde más brillante */
+    color: white; /* Texto blanco */
+    padding: 12px 25px; /* Más espaciado en el botón */
+    font-size: 1.1rem; /* Tamaño de fuente más grande */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes más redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    align-self: center; /* Centrar el botón */
+    transition: background-color 0.3s ease, transform 0.2s; /* Transición para cambio de color y animación */
+}
+
+#createResourceForm button:hover {
+    background-color: #45a049; /* Color más oscuro cuando se pasa el mouse */
+    transform: scale(1.05); /* Agrandar ligeramente al pasar el mouse */
+}
+
+#createResourceForm button:active {
+    background-color: #388e3c; /* Color aún más oscuro al hacer clic */
+    transform: scale(1); /* Restablecer el tamaño al hacer clic */
+}
+
+@media (max-width: 768px) {
+    #createResourceForm {
+        width: 90%; /* Ancho completo en pantallas pequeñas */
+    }
+
+    #createResourceForm h3 {
+        font-size: 1.6rem; /* Reducir el tamaño del título en pantallas pequeñas */
+    }
+
+    #createResourceForm input, 
+    #createResourceForm textarea {
+        font-size: 1rem; /* Reducir tamaño de los campos */
+    }
+
+    #createResourceForm button {
+        font-size: 1rem; /* Reducir tamaño del botón */
+    }
+}
+
