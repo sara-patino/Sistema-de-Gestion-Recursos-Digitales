@@ -1,10 +1,10 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('./UserModel'); // Importamos el modelo de usuario
-const JWT_SECRET = process.env.JWT_SECRET; // Asegúrate de tener una variable de entorno JWT_SECRET
+const User = require('../Models/UserModel'); 
+const JWT_SECRET = 'clave_secreta'; 
 
-// Crear un usuario
+
 exports.createUser = async (req, res) => {
     try {
         const { email, password } = req.body;

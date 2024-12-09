@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body id="Recursos">
+    <h1>Lista de Recursos</h1>
+    <table id="RecursosTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Ubicación</th>
+                <th>Acciones</th> <!-- Nueva columna -->
+            </tr>
+        </thead>
+        <tbody id="resource-table">
+            <!-- Los datos serán insertados aquí -->
+        </tbody>
+    </table>
+
+    <script>
+        async function fetchResources() {
+            try {
+                const response = await fetch('/resources/getAll');
+                if (!response.ok) throw new Error('Error al obtener los recursos');
+                
+                const resources = await response.json();
+                const tableBody = document.getElementById('resource-table');
+                tableBody.innerHTML = '';
+
+                resources.forEach(resource => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${resource._id}</td>
+                        <td>${resource.name}</td>
+                        <td>${resource.description}</td>
+                        <td>${resource.location}</td>
+                        <td>
+                            <button class="delete-button" onclick="deleteResource('${resource._id}')">
+                                🗑️
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error(error);
+                alert('Hubo un problema al cargar los recursos.');
+            }
+        }
+
+        async function deleteResource(resourceId) {
+            const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar el recurso con ID: ${resourceId}?`);
+            if (!confirmDelete) return;
+
+            try {
+                const response = await fetch(`/resources/delete/:${resourceId}`, { method: 'DELETE' });
+                if (!response.ok) throw new Error('Error al eliminar el recurso');
+                alert('Recurso eliminado correctamente');
+                fetchResources(); // Actualiza la tabla
+            } catch (error) {
+                console.error(error);
+                alert('Hubo un problema al eliminar el recurso.');
+            }
+        }
+        // Llama a la función cuando cargue la página
+        window.onload = fetchResources;
+    </script>
+</body>
+</html>

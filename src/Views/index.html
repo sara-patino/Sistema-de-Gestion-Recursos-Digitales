@@ -78,15 +78,9 @@
         };
 
         function showPrivateArea() {
-            fetch('/private', {
-                headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
-            })
-            .then(r => r.json())
-            .then(data => {
-                document.getElementById('loginButton').onclick = () => {
-                window.location.href = "/pagina-principal.html";
+            document.getElementById('loginButton').onclick = () => {
+            window.location.href = "/pagina-principal.html";
         };
-            });
         }
 
 

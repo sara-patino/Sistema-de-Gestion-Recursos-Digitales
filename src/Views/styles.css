@@ -246,3 +246,76 @@ button:active {
         font-size: 1.8rem; /* Reducir título */
     }
 }
+
+/* Página de Recursos */
+body#Recursos {
+    background-color: #f5f7fa; /* Fondo claro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#Recursos h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Tabla de Recursos */
+#RecursosTable {
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+#RecursosTable thead {
+    background-color: #007bff; /* Azul profesional */
+    color: #ffffff;
+    text-align: left;
+}
+
+#RecursosTable th, #RecursosTable td {
+    padding: 15px 20px;
+    font-size: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+#RecursosTable th {
+    font-weight: bold;
+}
+
+#RecursosTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternar colores en filas */
+}
+
+#RecursosTable tbody tr:hover {
+    background-color: #eef3fc; /* Efecto al pasar el mouse */
+    cursor: pointer;
+}
+
+#RecursosTable tbody td {
+    color: #555;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+/* Respuesta a pantallas pequeñas */
+@media (max-width: 768px) {
+    #RecursosTable {
+        font-size: 0.9rem; /* Ajustar tamaño en pantallas pequeñas */
+    }
+
+    #RecursosTable th, #RecursosTable td {
+        padding: 10px;
+    }
+}

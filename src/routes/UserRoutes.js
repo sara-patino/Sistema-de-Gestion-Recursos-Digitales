@@ -1,16 +1,16 @@
-const express = require('express')
-const { createUser, getUsers, getUserById, updateUser, deleteUser, } = require('../Controllers/UserController')
+const express = require('express');
+const router = express.Router();
+const userController = require('../Controllers/UserController');
 
-const router = express.Router()
+// Rutas para registro y autenticación
+router.post('/register', userController.createUser); // Registrar un nuevo usuario
+router.post('/login', userController.login); // Iniciar sesión
 
-console.log("[starting...][StudentRoutes]")
+// Rutas CRUD
+router.post('/create', userController.createResource);
+router.get('/getAll', userController.getResources);
+router.get('/:id', userController.getResourceById);
+router.put('/:id', userController.updateResource);
+router.delete('/:id', userController.deleteResource);
 
-
-router.post('/create', createUser)
-router.get('/getAll', getUsers);
-router.get('/get/:id', getUserById)
-router.put('/update/:id', updateUser)
-router.delete('/delete/:id', deleteUser)
-
-module.exports = router
-console.log("[end][StudentRoutes]")
+module.exports = router;

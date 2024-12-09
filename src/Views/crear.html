@@ -25,9 +25,8 @@
             <div>
                 <button id="crearbutton" type="submit">Crear Recurso</button>
             </div>
-
             <div>
-                <button id="volverButton">Volver</button>
+                <button id="volverButton" type="button">Volver</button>
             </div>
         </form>
     </div>
@@ -35,6 +34,39 @@
     <script>
         document.getElementById('volverButton').onclick = () => {
             window.location.href = "/pagina-principal.html";
+        };
+
+        document.getElementById('resourceForm').onsubmit = async (e) => {
+            e.preventDefault();
+
+            // Capturar los datos del formulario
+            const name = document.getElementById('resourceName').value;
+            const description = document.getElementById('resourceDescription').value;
+            const location = document.getElementById('resourceLocation').value;
+
+            // Enviar la solicitud POST
+            try {
+                const response = await fetch('/resources/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, description, location }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    alert(`Error al crear el recurso: ${errorData.error || 'Error desconocido'}`);
+                    return;
+                }
+
+                const data = await response.json();
+                alert(`Recurso creado exitosamente: ${data.resource.name}`);
+                window.location.href = "/recursos.html"; 
+            } catch (error) {
+                console.error('Error al crear el recurso:', error);
+                alert('Error al crear el recurso');
+            }
         };
     </script>
 </body>
