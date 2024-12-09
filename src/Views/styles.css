@@ -11,7 +11,7 @@ body {
 }
 
 /* Contenedor Principal */
-#authContainer {
+#authContainer, #privateArea {
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -75,221 +75,174 @@ button:active {
     transform: scale(0.98);
 }
 
-/* Botones específicos */
-#privateArea button:nth-child(4) {
-    background: #28a745;
-}
 
-#privateArea button:nth-child(4):hover {
-    background: #218838;
-}
-
-#privateArea button:nth-child(5) {
-    background: #dc3545;
-}
-
-#privateArea button:nth-child(5):hover {
-    background: #c82333;
-}
-
-/* Textarea */
-textarea {
-    min-height: 80px;
-}
-
-/* Resultados */
-#resourceByIdResult, #allResourcesResult {
-    margin-top: 10px;
-    padding: 10px;
-    background: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #555;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-/* Mensajes de Bienvenida */
-#welcomeMessage {
-    font-size: 18px;
-    color: #666666;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* Contenedores de Recursos */
-#allResourcesResult div {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-#allResourcesResult div:last-child {
-    border-bottom: none;
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-#authContainer {
-    animation: fadeIn 0.5s ease-out;
-}
-
-
+/* Contenedor del área privada */
 #privateArea {
-    display: none; /* Mantener oculto inicialmente */
-    background-color: #f4f4f4; /* Color de fondo gris claro */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 10px; /* Bordes redondeados */
-    width: 80%; /* Ancho del 80% del contenedor padre */
-    margin: 20px auto; /* Centrado en la página */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    position: relative; /* Permitir el posicionamiento absoluto del botón */
-    height: 300px; /* Asegura que haya suficiente espacio para el botón */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    text-align: center;
+    flex-direction: column; /* Cambiar a columna para organizar el contenido */
+    gap: 15px;
 }
 
+/* Título del área privada */
 #privateArea h2 {
-    font-size: 2rem; /* Tamaño de fuente grande */
-    color: #333; /* Color de texto oscuro */
-    margin-bottom: 15px; /* Espacio debajo del título */
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
 }
 
-#privateArea p {
-    font-size: 1rem; /* Tamaño de fuente más pequeño para el mensaje */
-    color: #666; /* Color de texto gris suave */
-    margin-bottom: 20px; /* Espacio debajo del mensaje */
+/* Mensaje de bienvenida */
+#welcomeMessage {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
 }
 
-#privateArea button {
-    background-color: #007bff; /* Color de fondo azul */
-    color: white; /* Texto blanco */
-    font-size: 1rem; /* Tamaño de fuente */
-    padding: 10px 20px; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-    margin-bottom: 15px; /* Espacio entre los botones */
-    transition: background-color 0.3s; /* Transición suave al cambiar el color */
-    width: 100%; /* Hacer que los botones ocupen todo el ancho disponible */
+/* Botones dentro del área privada */
+#createResourceButton1 {
+    background-color: #0056b3; /* Azul para los botones */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#privateArea button:hover {
-    background-color: #0056b3; /* Color más oscuro cuando se pasa el mouse */
+
+/* Cambiar el color al pasar el mouse */
+#createResourceButton1:hover {
+    background-color: #004080;
 }
 
-#privateArea button:active {
-    background-color: #003f7d; /* Color aún más oscuro al hacer clic */
+#getAllResourcesButton{
+    background-color: #5acc43; /* Azul para los botones */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+
+/* Cambiar el color al pasar el mouse */
+#getAllResourcesButton:hover {
+    background-color: #51bb3c;
+}
+
+
+
+/* Botón para cerrar sesión */
 #privateArea button:last-child {
-    width: auto; /* El último botón (Cerrar Sesión) no ocupa todo el ancho */
-    margin-top: 30px; /* Coloca el botón más abajo */
-    margin-bottom: 0; /* Elimina el margen inferior */
-    text-align: center; /* Asegura que el texto se centre */
-    position: absolute;
-    bottom: 30px; /* Aumenta el valor para desplazar el botón más abajo */
-    left: 50%;
-    transform: translateX(-50%); /* Centra el botón en la parte inferior */
+    background-color: #dc3545; /* Rojo para el botón de cerrar sesión */
+    margin-top: 50px;
+    max-width: 300px;
+    margin-left: 250px;
+}
+
+/* Cambiar el color al pasar el mouse sobre el botón de cerrar sesión */
+#privateArea button:last-child:hover {
+    background-color: #a71d2a;
 }
 
 #createResourceForm {
     background-color: #ffffff; /* Fondo blanco */
-    padding: 30px; /* Más espaciado interno */
-    border-radius: 12px; /* Bordes más redondeados */
-    width: 50%; /* Ancho más pequeño para un mejor centrado */
-    margin: 30px auto; /* Centrado en la página con más espacio alrededor */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave y profunda */
-    display: none; /* Mantener oculto inicialmente */
-    transition: transform 0.3s ease-in-out; /* Transición para animar la aparición */
+    padding: 40px; /* Espaciado amplio */
+    border-radius: 15px; /* Bordes más suaves */
+    width: 100%;
+    max-width: 600px; /* Ancho máximo */
+    margin: auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+    display: flex;
+    flex-direction: column; /* Colocar los hijos en columna */
+    gap: 20px; /* Espacio entre elementos */
 }
 
 #createResourceForm h3 {
-    font-size: 2rem; /* Tamaño de fuente más grande */
-    color: #333333; /* Color de texto más oscuro */
-    margin-bottom: 25px; /* Más espacio debajo del título */
-    text-align: center; /* Centrado del título */
-    font-weight: 600; /* Negrita */
+    font-size: 2rem; /* Título prominente */
+    color: #333; /* Texto oscuro */
+    text-align: center; /* Centrado */
+    margin-bottom: 20px; /* Separación */
+    font-weight: bold; /* Resaltar el título */
 }
 
 #createResourceForm form {
     display: flex;
-    flex-direction: column; /* Colocar los campos en columna */
-    gap: 20px; /* Espacio entre los campos */
+    flex-direction: column;
+    gap: 20px; /* Espaciado uniforme */
 }
 
 #createResourceForm label {
-    font-size: 1.1rem; /* Aumentar tamaño de la fuente de las etiquetas */
-    color: #666; /* Color gris claro para las etiquetas */
+    font-size: 1.2rem; /* Etiquetas claras */
+    color: #555; /* Color neutro */
 }
 
-#createResourceForm input, 
+#createResourceForm input,
 #createResourceForm textarea {
-    padding: 12px; /* Espaciado interno en los campos */
-    font-size: 1.1rem; /* Aumentar tamaño de la fuente en los campos */
-    border: 1px solid #ddd; /* Borde gris claro */
-    border-radius: 8px; /* Bordes más redondeados */
-    width: 100%; /* Campos ocupan todo el ancho disponible */
-    transition: border-color 0.3s ease; /* Transición para suavizar el cambio de borde */
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem; /* Tamaño cómodo */
+    border: 1px solid #ccc; /* Bordes suaves */
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease; /* Efecto suave */
 }
 
-#createResourceForm textarea {
-    resize: vertical; /* Permitir redimensionar verticalmente */
-    min-height: 120px; /* Altura mínima del área de texto */
-}
-
-#createResourceForm input:focus, 
+#createResourceForm input:focus,
 #createResourceForm textarea:focus {
-    border-color: #4CAF50; /* Color verde cuando se enfoca */
-    outline: none; /* Eliminar el contorno de enfoque predeterminado */
+    border-color: #007BFF; /* Azul profesional */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efecto de enfoque */
 }
 
-#createResourceForm button {
-    background-color: #4CAF50; /* Color verde más brillante */
-    color: white; /* Texto blanco */
-    padding: 12px 25px; /* Más espaciado en el botón */
-    font-size: 1.1rem; /* Tamaño de fuente más grande */
-    border: none; /* Sin borde */
-    border-radius: 8px; /* Bordes más redondeados */
-    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-    align-self: center; /* Centrar el botón */
-    transition: background-color 0.3s ease, transform 0.2s; /* Transición para cambio de color y animación */
+#createResourceForm textarea {
+    resize: none; /* Evitar redimensionar */
+    min-height: 100px; /* Altura mínima */
 }
 
-#createResourceForm button:hover {
-    background-color: #45a049; /* Color más oscuro cuando se pasa el mouse */
-    transform: scale(1.05); /* Agrandar ligeramente al pasar el mouse */
+#crearbutton:hover {
+    background-color: #004080; /* Azul más oscuro */
+    transform: scale(1.05); /* Agrandar ligeramente */
 }
 
-#createResourceForm button:active {
-    background-color: #388e3c; /* Color aún más oscuro al hacer clic */
-    transform: scale(1); /* Restablecer el tamaño al hacer clic */
+#crearbutton {
+    background-color: #007BFF; /* Azul vivo */
+    color: #fff; /* Texto blanco */
+    font-size: 1.2rem; /* Tamaño destacable */
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase; /* Letras mayúsculas */
+    font-weight: bold; /* Resaltar */
 }
+
+#volverButton {
+    background-color: #a71d2a; /* Azul aún más intenso */
+    transform: scale(1); /* Restablecer tamaño */
+}
+
+#volverButton:hover {
+    background-color: #dc3545; /* Azul más oscuro */
+    transform: scale(1.05); /* Agrandar ligeramente */
+}
+
+
 
 @media (max-width: 768px) {
     #createResourceForm {
-        width: 90%; /* Ancho completo en pantallas pequeñas */
+        padding: 30px; /* Reducir padding en pantallas pequeñas */
+        width: 90%;
     }
 
     #createResourceForm h3 {
-        font-size: 1.6rem; /* Reducir el tamaño del título en pantallas pequeñas */
-    }
-
-    #createResourceForm input, 
-    #createResourceForm textarea {
-        font-size: 1rem; /* Reducir tamaño de los campos */
-    }
-
-    #createResourceForm button {
-        font-size: 1rem; /* Reducir tamaño del botón */
+        font-size: 1.8rem; /* Reducir título */
     }
 }
-

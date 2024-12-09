@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div id="privateArea" style="display: flex;">
+        <h2>¡Bienvenido!</h2>
+        <p id="welcomeMessage"></p>
+    
+        <!-- Botón para Crear Recurso Digital -->
+        <button id="createResourceButton1">Crear Recurso Digital</button>
+    
+        <!-- Botón para Mostrar Recursos Digitales -->
+        <button id="getAllResourcesButton">Mostrar Recursos Digitales</button>
+    
+        <button id="logoutButton" onclick="logout()">Cerrar Sesión</button>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = "/";
+        }
+    
+
+        document.getElementById('getAllResourcesButton').onclick = () => {
+            window.location.href = "/recursos.html";
+        };
+
+        document.getElementById('createResourceButton1').onclick = () => {
+            window.location.href = "/crear.html";
+        };
+
+    </script>
+</body>
+</html>

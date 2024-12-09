@@ -12,8 +12,8 @@ app.use(express.static(path.join(__dirname, 'src/Views')));
 
 const users = [];
 const JWT_SECRET = 'clave_secreta';
-const url = 'mongodb://localhost:27017/pfpw';
-PORT = process.env.PORT || 3000;
+const url = 'mongodb://localhost:27017/recursos-digitales';
+PORT = 3001;
 
 connectDB();
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Recurso Digital</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div id="createResourceForm" style="display: flex;">
+        <h3>Crear Recurso Digital</h3>
+        <form id="resourceForm">
+            <div>
+                <label for="resourceName">Nombre del Recurso Digital:</label>
+                <input type="text" id="resourceName" name="resourceName" required placeholder="Ingrese el nombre del recurso">
+            </div>
+            <div>
+                <label for="resourceDescription">Descripción:</label>
+                <textarea id="resourceDescription" name="resourceDescription" required placeholder="Ingrese una descripción del recurso"></textarea>
+            </div>
+            <div>
+                <label for="resourceLocation">Ubicación (opcional):</label>
+                <input type="text" id="resourceLocation" name="resourceLocation" placeholder="Ingrese la ubicación del recurso">
+            </div>
+            <div>
+                <button id="crearbutton" type="submit">Crear Recurso</button>
+            </div>
+
+            <div>
+                <button id="volverButton">Volver</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('volverButton').onclick = () => {
+            window.location.href = "/pagina-principal.html";
+        };
+    </script>
+</body>
+</html>

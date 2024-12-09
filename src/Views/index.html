@@ -22,42 +22,7 @@
             <form id="loginForm">
                 <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Contraseña" required>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-
-        <!-- Área Privada -->
-        <div id="privateArea" style="display: none;">
-            <h2>Área Privada</h2>
-            <p id="welcomeMessage"></p>
-        
-            <!-- Botón para Crear Recurso Digital -->
-            <button id="createResourceButton">Crear Recurso Digital</button>
-        
-            <!-- Botón para Mostrar Recursos Digitales -->
-            <button id="getAllResourcesButton">Mostrar Recursos Digitales</button>
-        
-            <button onclick="logout()">Cerrar Sesión</button>
-        </div>
-
-        <div id="createResourceForm" style="display: none;">
-            <h3>Crear Recurso Digital</h3>
-            <form id="resourceForm">
-                <div>
-                    <label for="resourceName">Nombre del Recurso Digital:</label>
-                    <input type="text" id="resourceName" name="resourceName" required placeholder="Ingrese el nombre del recurso">
-                </div>
-                <div>
-                    <label for="resourceDescription">Descripción:</label>
-                    <textarea id="resourceDescription" name="resourceDescription" required placeholder="Ingrese una descripción del recurso"></textarea>
-                </div>
-                <div>
-                    <label for="resourceLocation">Ubicación (opcional):</label>
-                    <input type="text" id="resourceLocation" name="resourceLocation" placeholder="Ingrese la ubicación del recurso">
-                </div>
-                <div>
-                    <button type="submit">Crear Recurso</button>
-                </div>
+                <button id="loginButton" type="submit">Login</button>
             </form>
         </div>
 
@@ -118,48 +83,12 @@
             })
             .then(r => r.json())
             .then(data => {
-                document.getElementById('welcomeMessage').textContent =
-                `¡Bienvenido ${data.user.email}!`;
-                document.getElementById('publicArea').style.display = 'none';
-                document.getElementById('privateArea').style.display = 'block';
+                document.getElementById('loginButton').onclick = () => {
+                window.location.href = "/pagina-principal.html";
+        };
             });
         }
 
-        function logout() {
-            localStorage.removeItem('token');
-            document.getElementById('publicArea').style.display = 'block';
-            document.getElementById('privateArea').style.display = 'none';
-        }
-
-        // Mostrar el formulario para crear un recurso digital
-        document.getElementById('createResourceButton').onclick = () => {
-            document.getElementById('privateArea').style.display = 'none';
-            document.getElementById('createResourceForm').style.display = 'block';
-        };
-
-        // Crear recurso digital
-        document.getElementById('resourceForm').onsubmit = (e) => {
-            e.preventDefault();
-            const title = e.target[0].value;
-            const description = e.target[1].value;
-            const location = e.target[2].value;
-
-            fetch('/resources', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                },
-                body: JSON.stringify({ title, description, location })
-            })
-            .then(r => r.json())
-            .then(data => {
-                alert(data.message || 'Recurso creado exitosamente');
-                e.target.reset();
-                document.getElementById('createResourceForm').style.display = 'none';
-                document.getElementById('privateArea').style.display = 'block';
-            });
-        };
 
        
     </script>
