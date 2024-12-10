@@ -16,6 +16,7 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 - [Node.js](https://nodejs.org/) (v12 o superior)
 - [npm](https://www.npmjs.com/) (se instala automáticamente con Node.js)
+- [MongoDB](https://www.mongodb.com/) (local o en un servicio en la nube como Atlas)
 
 ## Instrucciones de instalación y ejecución
 
