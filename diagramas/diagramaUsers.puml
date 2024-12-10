@@ -1,0 +1,30 @@
+@startuml
+
+class UserModule {
+  - id: ObjectId
+  - email: String
+  - password: String
+}
+
+class UserController {
+  + register(req, res)
+  + login(req, res)
+  + getUsers(req, res)
+  + getUserById(req, res)
+  + updateUser(req, res)
+  + deleteUser(req, res)
+}
+
+class UserRoutes {
+  + POST /register
+  + POST /login
+  + GET /getAll
+  + GET /get/:id
+  + PUT /update/:id
+  + DELETE /delete/:id
+}
+
+UserController --> UserModule
+UserRoutes --> UserController
+
+@enduml

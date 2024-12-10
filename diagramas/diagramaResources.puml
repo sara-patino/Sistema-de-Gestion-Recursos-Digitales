@@ -1,0 +1,29 @@
+@startuml
+
+class ResourceModule {
+  - id: ObjectId
+  - name: String
+  - description: String
+  - location: String
+}
+
+class ResourceController {
+  + createResource(req, res)
+  + getResources(req, res)
+  + getResourceById(req, res)
+  + updateResource(req, res)
+  + deleteResource(req, res)
+}
+
+class ResourceRoutes {
+  + POST /create
+  + GET /getAll
+  + GET /get/:id
+  + PUT /update/:id
+  + DELETE /delete/:id
+}
+
+ResourceController --> ResourceModule
+ResourceRoutes --> ResourceController
+
+@enduml

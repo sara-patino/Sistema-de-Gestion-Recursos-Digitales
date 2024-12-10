@@ -67,3 +67,15 @@ Si deseas contribuir a este proyecto, puedes:
 1. Hacer un fork del repositorio.
 2. Crear una nueva rama para tu funcionalidad o corrección de errores.
 3. Enviar un pull request con tus cambios.
+
+
+## Diagramas de Clases
+| Diagrama | Código Fuente |
+|----------|---------------|
+| ![Diagrama Users](/diagramas/DiagramaUsers.svg) | [Ver código](/diagramas/diagramaUsers.puml)|
+| ![Diagrama Resources](/diagramas/DiagramaResources.svg) | [Ver código](/diagramas/diagramaResources.puml)|
+
+## Diagramas de Objetos
+| Diagrama | Código Fuente |
+|----------|---------------|
+| ![Diagrama CrearRecursos](/diagramas/diagramaDeEstados/CrearRecurso.svg) | [Ver código](/diagramas/diagramaDeEstados/crearRecurso.puml)|

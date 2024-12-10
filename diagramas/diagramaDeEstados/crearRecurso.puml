@@ -1,0 +1,25 @@
+@startuml
+[*] --> Registrado
+
+state Registrado {
+  [*] --> IniciarSesion
+  IniciarSesion --> VistaPrincipal : Login exitoso
+}
+
+state VistaPrincipal {
+  [*] --> CrearRecurso
+  CrearRecurso --> LlenarFormulario : Usuario clickea en crear
+}
+
+state LlenarFormulario {
+  [*] --> LlenandoFormulario
+  LlenandoFormulario --> CreandoRecurso : Usuario llena el formulario
+}
+
+state CreandoRecurso {
+  [*] --> RecursoCreado
+  RecursoCreado --> VistaRecursos : Usuario clickea en crear
+}
+
+VistaRecursos --> [*] : Visualiza todos los recursos
+@enduml
