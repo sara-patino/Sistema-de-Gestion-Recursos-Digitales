@@ -37,7 +37,7 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 4. **Acceso al proyecto**
     Una vez que el servidor esté corriendo, podrás acceder al proyecto desde tu navegador web ingresando a:
     ```arduino
-    http://localhost:3000
+    http://localhost:3001
     
 ## Endpoints principales
 
