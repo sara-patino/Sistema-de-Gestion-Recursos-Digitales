@@ -8,14 +8,11 @@ const JWT_SECRET = 'clave_secreta';
 exports.createUser = async (req, res) => {
     try {
         const { email, password } = req.body;
-
-        // Encriptar la contraseña
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-
+        const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({ email, password: hashedPassword });
         await user.save();
-        res.status(201).json({ message: 'Usuario creado exitosamente', user });
+        console.log("usuario:" + email + " contraseña:" + password);
+        res.json({ message: 'Registro exitoso' }).status(200);
     } catch (error) {
         if (error.code === 11000) {
             res.status(400).json({ error: 'El email ya está registrado' });
@@ -96,26 +93,24 @@ exports.deleteUser = async (req, res) => {
 
 // Login de usuario (autenticación)
 exports.login = async (req, res) => {
-    try {
-        const { email, password } = req.body;
+    const { email, password } = req.body;
 
-        // Buscar al usuario por el email
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(404).json({ error: 'Usuario no encontrado' });
-        }
-
-        // Comparar la contraseña
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).json({ error: 'Contraseña incorrecta' });
-        }
-
-        // Crear el JWT
-        const token = jwt.sign({ userId: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
-
-        res.status(200).json({ message: 'Autenticación exitosa', token });
-    } catch (error) {
-        res.status(500).json({ error: 'Error al autenticar al usuario' });
+    const user = await User.findOne({ email });
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+        return res.status(401).json({ error: 'Credenciales inválidas' });
     }
+    const token = jwt.sign({ email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token });
 };
+
+/*const auth = (req, res, next) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) return res.status(401).json({ error: 'Token requerido' });  
+    try { 
+        req.user = jwt.verify(token, JWT_SECRET);
+        next();
+    } catch (err) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+    next();
+};*/
