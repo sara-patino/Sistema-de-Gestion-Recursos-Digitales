@@ -4,20 +4,28 @@ skinparam linetype ortho
 
 package "Server" {
     class Server {
+        + ConnectDB()
         + start()
-        + configureRoutes()
+        + userRoutes
+        + resourceRoutes
     }
 }
 
 package "Routes" {
     class userRoutes {
-        + handleSignup()
-        + handleLogin()
+        + register()
+        + login()
+        + getAll()
+        + get()
+        + update()
+        + delete()
     }
     class ResourceRoutes {
-        + handleCreate()
-        + handleGetAll()
-        + handleDelete()
+        + Create()
+        + GetAll()
+        + Get()
+        + Update()
+        + Delete()
     }
 }
 
@@ -27,12 +35,13 @@ package "Controllers" {
         + login()
         + put()
         + delete()
-        +
     }
     class ResourceController {
-        + createInitiative()
-        + getAllInitiatives()
-        + deleteInitiative()
+        + createResource()
+        + getResources()
+        + getResourceById()
+        + updateResource()
+        + deleteResource()
     }
 }
 
@@ -54,6 +63,12 @@ package "Models" {
     }
 }
 
+package "Config" {
+    class Config {
+        + ConnectDB()
+    }
+}
+
 Server --> userRoutes : configures
 Server --> ResourceRoutes : configures
 
@@ -65,4 +80,6 @@ ResourceController --> ResourceModel : manages
 
 ResourceRoutes --> authenticateUser : uses
 authenticateUser --> ResourceController : verifies
+
+Server --> Config : uses
 @enduml
