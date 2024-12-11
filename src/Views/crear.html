@@ -19,7 +19,7 @@
                 <textarea id="resourceDescription" name="resourceDescription" required placeholder="Ingrese una descripción del recurso"></textarea>
             </div>
             <div>
-                <label for="resourceLocation">Ubicación (opcional):</label>
+                <label for="resourceLocation">Ubicación</label>
                 <input type="text" id="resourceLocation" name="resourceLocation" placeholder="Ingrese la ubicación del recurso">
             </div>
             <div>
@@ -32,6 +32,16 @@
     </div>
 
     <script>
+        const token = localStorage.getItem('token');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!token) {
+                alert("Debes iniciar sesión para acceder a esta página.");
+                window.location.href = "/"; 
+                return;
+            }
+        });
+
         document.getElementById('volverButton').onclick = () => {
             window.location.href = "/pagina-principal.html";
         };
@@ -39,17 +49,16 @@
         document.getElementById('resourceForm').onsubmit = async (e) => {
             e.preventDefault();
 
-            // Capturar los datos del formulario
             const name = document.getElementById('resourceName').value;
             const description = document.getElementById('resourceDescription').value;
             const location = document.getElementById('resourceLocation').value;
 
-            // Enviar la solicitud POST
             try {
                 const response = await fetch('/resources/create', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify({ name, description, location }),
                 });

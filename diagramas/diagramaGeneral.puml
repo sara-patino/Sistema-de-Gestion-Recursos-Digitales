@@ -1,0 +1,68 @@
+@startuml
+skinparam packageStyle rect
+skinparam linetype ortho
+
+package "Server" {
+    class Server {
+        + start()
+        + configureRoutes()
+    }
+}
+
+package "Routes" {
+    class userRoutes {
+        + handleSignup()
+        + handleLogin()
+    }
+    class ResourceRoutes {
+        + handleCreate()
+        + handleGetAll()
+        + handleDelete()
+    }
+}
+
+package "Controllers" {
+    class UserController {
+        + register()
+        + login()
+        + put()
+        + delete()
+        +
+    }
+    class ResourceController {
+        + createInitiative()
+        + getAllInitiatives()
+        + deleteInitiative()
+    }
+}
+
+package "Middleware" {
+    class authenticateUser {
+        + verifyToken()
+    }
+}
+
+package "Models" {
+    class UserModel {
+        + email: string
+        + password: string
+    }
+    class ResourceModel {
+        + name: string
+        + description: string
+        + location: string
+    }
+}
+
+Server --> userRoutes : configures
+Server --> ResourceRoutes : configures
+
+userRoutes --> UserController : calls
+ResourceRoutes --> ResourceController : calls
+
+UserController --> UserModel : manages
+ResourceController --> ResourceModel : manages
+
+ResourceRoutes --> authenticateUser : uses
+authenticateUser --> ResourceController : verifies
+@enduml

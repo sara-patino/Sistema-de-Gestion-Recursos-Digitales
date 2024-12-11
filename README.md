@@ -72,6 +72,7 @@ Si deseas contribuir a este proyecto, puedes:
 ## Diagramas de Clases
 | Diagrama | Código Fuente |
 |----------|---------------|
+| ![Diagrama General](/diagramas/DiagramaGeneral.svg) | [Ver código](/diagramas/diagramaGeneral.puml)|
 | ![Diagrama Users](/diagramas/DiagramaUsers.svg) | [Ver código](/diagramas/diagramaUsers.puml)|
 | ![Diagrama Resources](/diagramas/DiagramaResources.svg) | [Ver código](/diagramas/diagramaResources.puml)|
 

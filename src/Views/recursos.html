@@ -27,6 +27,17 @@
     <button id="volverButton" onclick="volver()">Regresar a la página principal</button>
 
     <script>
+        const token = localStorage.getItem('token');
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            if (!token) {
+                alert("Debes iniciar sesión para acceder a esta página.");
+                window.location.href = "/"; 
+                return;
+            }
+        });
+
         async function fetchResources() {
             try {
                 const response = await fetch('/resources/getAll');
@@ -68,6 +79,7 @@
             try {
                 const response = await fetch(`/resources/delete/${resourceId}`, {
                     method: 'DELETE',
+                    'Authorization': `Bearer ${token}`
                 });
 
                 if (!response.ok) {
@@ -86,23 +98,21 @@
         }
 
         async function editResource(resourceId) {
-            // Obtener nuevos datos del usuario (puedes personalizar la entrada según tu implementación)
             const newName = prompt("Ingresa el nuevo nombre del recurso:");
             const newDescription = prompt("Ingresa la nueva descripción del recurso:");
             const newLocation = prompt("Ingresa la nueva ubicación del recurso:");
 
-            // Validar entradas
             if (!newName || !newDescription || !newLocation) {
                 alert("Todos los campos son obligatorios para editar el recurso.");
                 return;
             }
 
-            // Enviar la solicitud PUT
             try {
                 const response = await fetch(`/resources/update/${resourceId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify({
                         name: newName,
@@ -120,7 +130,6 @@
                 const data = await response.json();
                 alert(`Recurso actualizado exitosamente: ${data.updatedResource.name}`);
 
-                // Refrescar la lista de recursos (asumiendo que tienes una función fetchResources)
                 fetchResources();
             } catch (error) {
                 console.error('Error al editar el recurso:', error);

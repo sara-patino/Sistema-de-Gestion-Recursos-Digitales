@@ -77,7 +77,6 @@ exports.updateUser = async (req, res) => {
     }
 };
 
-// Eliminar un usuario por ID
 exports.deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
@@ -91,7 +90,6 @@ exports.deleteUser = async (req, res) => {
     }
 };
 
-// Login de usuario (autenticación)
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
@@ -100,17 +98,5 @@ exports.login = async (req, res) => {
         return res.status(401).json({ error: 'Credenciales inválidas' });
     }
     const token = jwt.sign({ email: user.email }, JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
+    res.status(200).json({ token });
 };
-
-/*const auth = (req, res, next) => {
-    const token = req.headers.authorization?.split(' ')[1];
-    if (!token) return res.status(401).json({ error: 'Token requerido' });  
-    try { 
-        req.user = jwt.verify(token, JWT_SECRET);
-        next();
-    } catch (err) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }
-    next();
-};*/
