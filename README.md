@@ -76,7 +76,7 @@ Si deseas contribuir a este proyecto, puedes:
 | ![Diagrama Users](/diagramas/DiagramaUsers.svg) | [Ver código](/diagramas/diagramaUsers.puml)|
 | ![Diagrama Resources](/diagramas/DiagramaResources.svg) | [Ver código](/diagramas/diagramaResources.puml)|
 
-## Diagramas de Objetos
+## Diagramas de Estados
 | Diagrama | Código Fuente |
 |----------|---------------|
 | ![Diagrama CrearRecursos](/diagramas/diagramaDeEstados/CrearRecurso.svg) | [Ver código](/diagramas/diagramaDeEstados/crearRecurso.puml)|
