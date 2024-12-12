@@ -24,8 +24,6 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
    ```bash
    git clone <https://github.com/sara-patino/Sistema-de-Gestion-Recursos-Digitales.git>
-   cd gestion-recursos
-
 2. **Instalar las dependencias:**
     ```bash
     npm install
