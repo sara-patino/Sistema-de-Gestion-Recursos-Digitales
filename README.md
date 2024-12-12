@@ -41,7 +41,7 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
     
 ## Endpoints principales
 
-### Recursos
+### ENPOINTS
 
 - **Crear recurso:** `POST /resources/create`
 - **Obtener todos los recursos:** `GET /resources/getAll`
@@ -56,7 +56,7 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 ## Tecnologías utilizadas
 
-- **Backend:** Node.js, Express.js
+- **Backend:** Node.js, Express.js, bcrypt
 - **Base de datos:** MongoDB
 - **Autenticación:** JSON Web Tokens (JWT)
 
