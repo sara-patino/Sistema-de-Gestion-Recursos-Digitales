@@ -1,4 +1,4 @@
-# Gestión de Recursos Digitales
+# Sistema de Recursos Digitales
 
 Este proyecto tiene como objetivo proporcionar una solución para la gestión de recursos materiales, como impresoras, computadoras, proyectores y otros activos dentro de una organización. Con esta aplicación, los usuarios pueden crear, editar, consultar y eliminar recursos, facilitando así el control y la organización de los mismos.
 
