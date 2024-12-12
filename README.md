@@ -54,9 +54,10 @@ Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes c
 
 ## Tecnologías utilizadas
 
-- **Backend:** Node.js, Express.js, bcrypt
+- **Backend:** Node.js, Express.js
 - **Base de datos:** MongoDB
-- **Autenticación:** JSON Web Tokens (JWT)
+- **FrontEnd:** HTML, CSS y JavaScript
+- **Autenticación:** JSON Web Tokens (JWT), bcrypt
 
 ## Contribuciones
 
